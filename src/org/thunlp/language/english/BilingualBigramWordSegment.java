@@ -20,6 +20,7 @@ public class BilingualBigramWordSegment implements WordSegment{
     	withSpaceInBigram = b;
     }
     
+    @Override
     public boolean outputPosTag() {
 		return false;
 	}
@@ -40,6 +41,7 @@ public class BilingualBigramWordSegment implements WordSegment{
     	return sb.toString();
     }
     
+	@Override
 	public String[] segment(String text) {
 		EnglishWordSegment seg = new EnglishWordSegment();
 		String[] tokens = seg.segment(splitChineseCharactersWithSpace(text));

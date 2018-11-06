@@ -20,10 +20,12 @@ public class EnglishBigramWordSegment implements WordSegment {
     	withSpaceInBigram = b;
     }
     
+    @Override
     public boolean outputPosTag() {
 		return false;
 	}
 
+	@Override
 	public String[] segment(String text) {
 		EnglishWordSegment seg = new EnglishWordSegment();
 		String[] tokens = seg.segment(text);

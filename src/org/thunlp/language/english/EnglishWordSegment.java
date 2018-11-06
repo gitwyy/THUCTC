@@ -67,6 +67,7 @@ public class EnglishWordSegment implements WordSegment {
     return stopwords;
   }
 
+  @Override
   public boolean outputPosTag() {
     return false;
   }
@@ -74,6 +75,7 @@ public class EnglishWordSegment implements WordSegment {
   /**
    * 使用porterStemmer和停用词表来切分处理英文
    */
+  @Override
   public String[] segment(String text) {
     String [] tokens = text.split("[^0-9\\p{L}]+");
     LinkedList<String> results = new LinkedList<String>(); 

@@ -7,10 +7,12 @@ import java.util.List;
 public class BigramWordSegment implements WordSegment, Serializable {
 	private List<String> segs = new ArrayList<String>();
 	
-	public boolean outputPosTag() {
+	@Override
+    public boolean outputPosTag() {
 		return false;
 	}
 
+	@Override
 	public String[] segment(String text) {
 		int start, end;
 		
@@ -21,10 +23,12 @@ public class BigramWordSegment implements WordSegment, Serializable {
 		while ( end < text.length() ) {
 			if ( Character.isSpaceChar(text.charAt(end)) ) {
 				segs.add(text.substring(start, end));
-				while ( end < text.length() && Character.isSpaceChar( text.charAt(end) ) )
-						end++;
-				if ( end >= text.length() )
+				while ( end < text.length() && Character.isSpaceChar( text.charAt(end) ) ) {
+					end++;
+				}
+				if ( end >= text.length() ){
 					break;
+				}
 				start = end;
 			}
 			if ( LangUtils.isChinese(text.codePointAt(end)) ) {
@@ -53,11 +57,26 @@ public class BigramWordSegment implements WordSegment, Serializable {
 	}
 
 	public static void main (String args[]) {
-		BigramWordSegment bws = new BigramWordSegment();
-		String [] result = bws.segment("客户端没有在限定的时间内将数据2012发送给服务器，Currently, the aerotriangulation object space coordinate system of aerial image is built on the tangent plane of the earth, and the scope of data processing is limited by the geographical scope. 服务器为了保证服务性能，认定那个连接已经失效，所以出现上述异常。 ");
-		for (String str : result) {
-			System.out.println(str);
-		}
+//		BigramWordSegment bws = new BigramWordSegment();
+//		String [] result = bws.segment("客户端没有在限定的时间内将数据2012发送给服务器，Currently, the aerotriangulation object space coordinate system of aerial image is built on the tangent plane of the earth, and the scope of data processing is limited by the geographical scope. 服务器为了保证服务性能，认定那个连接已经失效，所以出现上述异常。 ");
+//		for (String str : result) {
+//			System.out.println(str);
+//		}
+
+//		for (int i = 0; i < len * 8; i++) {
+//			if ((bitmap[i / 8] & (0x80 >>> (i % 8))) != 0)
+//				bs.set(i + 1, true);
+//		}
+
+		System.out.println(2/8);
+
+		System.out.println(2%8);
+
+		System.out.println(0x80);
+
+		System.out.println((0x80>>>1));
+
+		System.out.println(-7&64);
 	}
 	
 }

@@ -27,9 +27,7 @@ public class TextFileReader {
 			fill += read;
 			if ( fill >= buffer.length ) {
 				char [] newbuffer = new char[bufsize + buffer.length];
-				for ( int i = 0 ; i < buffer.length; i++ ) 
-					newbuffer[i] = buffer[i];
-				buffer = null;
+				System.arraycopy(buffer, 0, newbuffer, 0, buffer.length);
 				buffer = newbuffer;
 			}
 		}
